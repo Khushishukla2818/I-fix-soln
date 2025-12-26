@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { useQuery } from "@tanstack/react-query";
 
 const serviceCards = [
   {
@@ -119,24 +117,6 @@ const bottomFeatures = [
 ];
 
 export const Desktop = (): JSX.Element => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedModel, setSelectedModel] = useState<string | null>(null);
-
-  const { data: searchResults = [] } = useQuery({
-    queryKey: ["search-phones", searchQuery],
-    queryFn: async () => {
-      if (!searchQuery) return [];
-      const res = await fetch(`/api/search-phones?q=${encodeURIComponent(searchQuery)}`);
-      return res.json();
-    },
-    enabled: searchQuery.length > 0,
-  });
-
-  const handleSelectModel = (model: any) => {
-    setSelectedModel(model.displayName);
-    setSearchQuery("");
-  };
-
   return (
     <div className="bg-white w-full relative">
       <header className="fixed top-0 left-0 right-0 bg-[#fffefe] shadow-[0px_4px_4px_#00000040] z-50 h-16 md:h-[71px]">
@@ -195,48 +175,6 @@ export const Desktop = (): JSX.Element => {
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-[22px] mt-8 md:mt-[58px] px-4">
-            <div className="relative w-full md:w-[308px]">
-              <Input
-                placeholder="Search Your Model Number"
-                value={selectedModel || searchQuery}
-                onChange={(e) => {
-                  setSearchQuery(e.target.value);
-                  if (e.target.value === "") setSelectedModel(null);
-                }}
-                className="w-full h-12 md:h-[59px] bg-white rounded-[40px] border border-solid border-[#c0c0c0] shadow-[0px_1px_4px_#00000040] pl-12 md:pl-[65px] [font-family:'Poppins',Helvetica] font-medium text-black text-sm md:text-[15px]"
-              />
-              <img
-                className="absolute top-1/2 -translate-y-1/2 left-4 md:left-[26px] w-5 md:w-[23px] h-5 md:h-[22px]"
-                alt="Vector"
-                src="/figmaAssets/vector-1.svg"
-              />
-              {searchQuery && searchResults.length > 0 && (
-                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-[#c0c0c0] rounded-[10px] shadow-lg z-10 max-h-64 overflow-y-auto">
-                  {searchResults.map((model: any) => (
-                    <button
-                      key={model.id}
-                      onClick={() => handleSelectModel(model)}
-                      className="w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors [font-family:'Poppins',Helvetica] text-black text-sm"
-                    >
-                      {model.displayName}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div className="flex flex-col items-center">
-              <span className="[font-family:'Poppins',Helvetica] font-medium text-black text-base md:text-xl tracking-[0] leading-[normal] text-center">
-                How to find my model number
-              </span>
-              <img
-                className="w-32 md:w-[306px] h-0.5 mt-4 md:mt-[22px]"
-                alt="Line"
-                src="/figmaAssets/line-1.svg"
-              />
-            </div>
-          </div>
         </section>
 
         <section className="mt-12 md:mt-[89px] px-4 md:px-8 lg:px-[122px]">
