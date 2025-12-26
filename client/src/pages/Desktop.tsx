@@ -203,29 +203,29 @@ export const Desktop = (): JSX.Element => {
 
       <main className="pt-16 md:pt-[71px]">
         <section className="relative px-4 md:px-8">
-          <div className="mt-2 md:mt-[11px] mx-auto max-w-4xl md:max-w-5xl shadow-[0px_4px_4px_#00000040]">
+          <div className="mt-2 md:mt-[11px] mx-auto max-w-4xl md:max-w-5xl shadow-[0px_4px_4px_#00000040] overflow-hidden rounded-[20px]">
             <img
-              className="w-full h-40 md:h-80 rounded-[20px] object-cover"
+              className="w-full h-40 md:h-80 object-cover transition-opacity duration-500"
               alt="Element banner"
               src={bannerImages[currentBannerIndex]}
             />
           </div>
+        </section>
 
-          <div className="text-center mt-4 md:mt-[17px]">
-            <h1 className="[font-family:'Poppins',Helvetica] font-medium text-black text-2xl md:text-[40px] tracking-[0] leading-[normal]">
-              DOORSTEP PHONE REPAIRS
-            </h1>
-            <p className="[font-family:'Poppins',Helvetica] font-medium text-black text-base md:text-xl tracking-[0] leading-[normal] mt-4 md:mt-[26px]">
-              The fastest doorstep mobile repair services
-            </p>
-            <Button
-              onClick={() => setIsModalOpen(true)}
-              className="mt-6 md:mt-[26px] bg-[#ff5900] hover:bg-[#ff5900] text-white [font-family:'Poppins',Helvetica] font-medium text-base md:text-lg"
-            >
-              Book Now
-            </Button>
-          </div>
-
+        <section className="relative px-4 md:px-8 text-center">
+          <h1 className="[font-family:'Poppins',Helvetica] font-medium text-black text-2xl md:text-[40px] tracking-[0] leading-[normal] mt-4 md:mt-[17px]">
+            DOORSTEP PHONE REPAIRS
+          </h1>
+          <p className="[font-family:'Poppins',Helvetica] font-medium text-black text-base md:text-xl tracking-[0] leading-[normal] mt-4 md:mt-[26px]">
+            The fastest doorstep mobile repair services
+          </p>
+          <Button
+            onClick={() => setIsModalOpen(true)}
+            className="mt-6 md:mt-[26px] bg-[#ff5900] hover:bg-[#ff5900] text-white [font-family:'Poppins',Helvetica] font-medium text-base md:text-lg"
+            data-testid="button-book-now"
+          >
+            Book Now
+          </Button>
         </section>
 
         <section className="mt-12 md:mt-[89px] px-4 md:px-8 lg:px-[122px]">
