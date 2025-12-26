@@ -417,21 +417,43 @@ export const Desktop = (): JSX.Element => {
       </aside>
 
       <div className="hidden md:flex fixed top-96 right-4 md:right-[23px] flex-col gap-6 md:gap-[26px]">
-        <img
-          className="w-12 md:w-[52px] h-12 md:h-[52px] object-cover cursor-pointer"
-          alt="Ellipse"
-          src="/figmaAssets/ellipse-5.png"
-        />
-        <img
-          className="w-12 md:w-[52px] h-12 md:h-[52px] object-cover cursor-pointer"
-          alt="Ellipse"
-          src="/figmaAssets/ellipse-4.png"
-        />
-        <img
-          className="w-12 md:w-[52px] h-12 md:h-[52px] object-cover cursor-pointer"
-          alt="Ellipse"
-          src="/figmaAssets/ellipse-6.png"
-        />
+        <a
+          href="https://wa.me/+919876543210"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="transition-transform hover:scale-110"
+          title="WhatsApp"
+        >
+          <img
+            className="w-12 md:w-[52px] h-12 md:h-[52px] object-cover cursor-pointer"
+            alt="WhatsApp"
+            src="/figmaAssets/ellipse-5.png"
+          />
+        </a>
+        <a
+          href="https://www.google.com/maps/search/phone+repair+service"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="transition-transform hover:scale-110"
+          title="Location"
+        >
+          <img
+            className="w-12 md:w-[52px] h-12 md:h-[52px] object-cover cursor-pointer"
+            alt="Location"
+            src="/figmaAssets/ellipse-4.png"
+          />
+        </a>
+        <a
+          href="tel:+919876543210"
+          className="transition-transform hover:scale-110"
+          title="Call Us"
+        >
+          <img
+            className="w-12 md:w-[52px] h-12 md:h-[52px] object-cover cursor-pointer"
+            alt="Phone"
+            src="/figmaAssets/ellipse-6.png"
+          />
+        </a>
       </div>
     </div>
   );
