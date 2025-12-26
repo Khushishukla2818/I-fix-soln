@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { X } from "lucide-react";
 
 const serviceCards = [
   {
@@ -43,6 +44,12 @@ const brandLogos = [
   { src: "/figmaAssets/rectangle-63-17.png", alt: "Brand 18" },
   { src: "/figmaAssets/rectangle-63-18.png", alt: "Brand 19" },
   { src: "/figmaAssets/rectangle-63-19.png", alt: "Brand 20" },
+];
+
+const bannerImages = [
+  "/figmaAssets/989351ogf-banner-4.png",
+  "/figmaAssets/989351ogf-banner-4.png",
+  "/figmaAssets/989351ogf-banner-4.png",
 ];
 
 const processSteps = [
@@ -118,6 +125,43 @@ const bottomFeatures = [
 ];
 
 export const Desktop = (): JSX.Element => {
+  const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    mobileNumber: "",
+    cityPincode: "",
+    modelNumber: "",
+  });
+
+  useEffect(() => {
+    const bannerInterval = setInterval(() => {
+      setCurrentBannerIndex((prev) => (prev + 1) % bannerImages.length);
+    }, 5000);
+    return () => clearInterval(bannerInterval);
+  }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = () => {
+    const message = `Hi 👋 I Fix Solutions, I have a query regarding my mobile. Can you please help?\n\nName: ${formData.fullName}\nMobile: ${formData.mobileNumber}\nCity/Pincode: ${formData.cityPincode}\nModel: ${formData.modelNumber}`;
+    const whatsappLink = `https://api.whatsapp.com/send?phone=918884996995&text=${encodeURIComponent(message)}`;
+    window.open(whatsappLink, "_blank");
+    setIsModalOpen(false);
+    setFormData({
+      fullName: "",
+      mobileNumber: "",
+      cityPincode: "",
+      modelNumber: "",
+    });
+  };
+
   return (
     <div className="bg-white w-full relative">
       <header className="fixed top-0 left-0 right-0 bg-[#fffefe] shadow-[0px_4px_4px_#00000040] z-50 h-16 md:h-[71px]">
@@ -163,7 +207,7 @@ export const Desktop = (): JSX.Element => {
             <img
               className="w-full h-40 md:h-80 rounded-[20px] object-cover"
               alt="Element banner"
-              src="/figmaAssets/989351ogf-banner-4.png"
+              src={bannerImages[currentBannerIndex]}
             />
           </div>
 
@@ -174,6 +218,12 @@ export const Desktop = (): JSX.Element => {
             <p className="[font-family:'Poppins',Helvetica] font-medium text-black text-base md:text-xl tracking-[0] leading-[normal] mt-4 md:mt-[26px]">
               The fastest doorstep mobile repair services
             </p>
+            <Button
+              onClick={() => setIsModalOpen(true)}
+              className="mt-6 md:mt-[26px] bg-[#ff5900] hover:bg-[#ff5900] text-white [font-family:'Poppins',Helvetica] font-medium text-base md:text-lg"
+            >
+              Book Now
+            </Button>
           </div>
 
         </section>
@@ -418,7 +468,7 @@ export const Desktop = (): JSX.Element => {
 
       <div className="hidden md:flex fixed top-96 right-4 md:right-[23px] flex-col gap-6 md:gap-[26px]">
         <a
-          href="https://wa.me/+919876543210"
+          href="https://api.whatsapp.com/send?phone=918884996995&text=Hi%20%F0%9F%91%8B%20I%20Fix%20Solutions%20%2C%0AI%20have%20a%20query%20regarding%20my%20mobile.%20Can%20you%20please%20help%3F%0A"
           target="_blank"
           rel="noopener noreferrer"
           className="transition-transform hover:scale-110"
@@ -431,7 +481,7 @@ export const Desktop = (): JSX.Element => {
           />
         </a>
         <a
-          href="https://www.google.com/maps/search/phone+repair+service"
+          href="https://www.google.com/maps/place/I+Fix+Solutions+Mobile+repairing+shop/@15.8272592,80.3537163,17z/data=!4m6!3m5!1s0x3a4a45bfb76a46c9:0xfb8ecdf99bd3b973!8m2!3d15.8272592!4d80.3562912!16s%2Fg%2F11y5hd7d9x"
           target="_blank"
           rel="noopener noreferrer"
           className="transition-transform hover:scale-110"
@@ -444,7 +494,7 @@ export const Desktop = (): JSX.Element => {
           />
         </a>
         <a
-          href="tel:+919876543210"
+          href="tel:+918884996995"
           className="transition-transform hover:scale-110"
           title="Call Us"
         >
@@ -455,6 +505,91 @@ export const Desktop = (): JSX.Element => {
           />
         </a>
       </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-[100] flex items-center justify-center p-4">
+          <Card className="w-full max-w-md bg-white rounded-[20px] shadow-lg border-0">
+            <CardContent className="p-6 md:p-8">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="[font-family:'Poppins',Helvetica] font-semibold text-black text-xl md:text-2xl tracking-[0]">
+                  I Fix Solutions
+                </h2>
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="text-gray-600 hover:text-gray-800"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="[font-family:'Poppins',Helvetica] font-medium text-black text-sm block mb-2">
+                    Full Name
+                  </label>
+                  <Input
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    placeholder="Enter your full name"
+                    className="border border-gray-300 rounded-md px-3 py-2"
+                  />
+                </div>
+
+                <div>
+                  <label className="[font-family:'Poppins',Helvetica] font-medium text-black text-sm block mb-2">
+                    Mobile Number
+                  </label>
+                  <Input
+                    type="tel"
+                    name="mobileNumber"
+                    value={formData.mobileNumber}
+                    onChange={handleInputChange}
+                    placeholder="Enter your mobile number"
+                    className="border border-gray-300 rounded-md px-3 py-2"
+                  />
+                </div>
+
+                <div>
+                  <label className="[font-family:'Poppins',Helvetica] font-medium text-black text-sm block mb-2">
+                    City / Pincode
+                  </label>
+                  <Input
+                    type="text"
+                    name="cityPincode"
+                    value={formData.cityPincode}
+                    onChange={handleInputChange}
+                    placeholder="Enter city and pincode"
+                    className="border border-gray-300 rounded-md px-3 py-2"
+                  />
+                </div>
+
+                <div>
+                  <label className="[font-family:'Poppins',Helvetica] font-medium text-black text-sm block mb-2">
+                    Model Name / Model Number
+                  </label>
+                  <Input
+                    type="text"
+                    name="modelNumber"
+                    value={formData.modelNumber}
+                    onChange={handleInputChange}
+                    placeholder="Enter your device model"
+                    className="border border-gray-300 rounded-md px-3 py-2"
+                  />
+                </div>
+
+                <Button
+                  onClick={handleSubmit}
+                  className="w-full mt-6 bg-[#ff5900] hover:bg-[#ff5900] text-white [font-family:'Poppins',Helvetica] font-medium text-base"
+                >
+                  Repair Now
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </div>
   );
 };
