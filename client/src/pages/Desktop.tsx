@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 
 const serviceCards = [
   {
@@ -385,19 +386,19 @@ export const Desktop = (): JSX.Element => {
         </section>
 
         <section className="mt-12 md:mt-[69px] px-4 md:px-8 lg:px-[122px] mb-8">
-          <div className="bg-[#f5f5f54c] rounded-[20px] shadow-[0px_0px_4px_#00000040] h-auto md:h-[247px] p-6 md:p-0">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-[52px] md:pt-[31px] md:px-[74px]">
+          <div className="bg-[#f5f5f54c] rounded-[20px] shadow-[0px_0px_4px_#00000040] w-full p-6 md:py-8 md:px-[74px]">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-[52px]">
               {bottomFeatures.map((feature, index) => (
                 <div key={index} className="flex flex-col items-center text-center">
                   <img
-                    className="w-12 md:w-[60px] h-12 md:h-[60px] mx-auto"
+                    className="w-12 md:w-[60px] h-12 md:h-[60px] mx-auto flex-shrink-0"
                     alt={feature.title}
                     src={feature.icon}
                   />
-                  <h3 className="[font-family:'Poppins',Helvetica] font-medium text-black text-lg md:text-[25px] text-center tracking-[0] leading-[normal] mt-6 md:mt-[68px]">
+                  <h3 className="[font-family:'Poppins',Helvetica] font-medium text-black text-base md:text-[25px] text-center tracking-[0] leading-tight mt-3 md:mt-6 break-words">
                     {feature.title}
                   </h3>
-                  <p className="[font-family:'Poppins',Helvetica] font-normal text-black text-xs md:text-sm text-center tracking-[0] leading-[normal] mt-4 md:mt-[46px] max-w-xs md:w-[353px]">
+                  <p className="[font-family:'Poppins',Helvetica] font-normal text-black text-xs md:text-sm text-center tracking-[0] leading-relaxed mt-2 md:mt-4 overflow-hidden">
                     {feature.description}
                   </p>
                 </div>
