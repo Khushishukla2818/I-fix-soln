@@ -10,9 +10,7 @@ import { Desktop } from "@/pages/Desktop";
 function Router() {
   return (
     <Switch>
-      {/* Add pages below */}
       <Route path="/" component={Desktop} />
-      {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>
   );

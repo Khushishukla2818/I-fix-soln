@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { X } from "lucide-react";
+import banners from "@/data/banner";
+
 
 const serviceCards = [
   {
@@ -46,11 +48,11 @@ const brandLogos = [
   { src: "/figmaAssets/rectangle-63-19.png", alt: "Brand 20" },
 ];
 
-const bannerImages = [
-  "/figmaAssets/989351ogf-banner-4.png",
-  "/figmaAssets/989351ogf-banner-4.png",
-  "/figmaAssets/989351ogf-banner-4.png",
-];
+// const bannerImages = [
+//   "/figmaAssets/989351ogf-banner-4.png",
+//   "/figmaAssets/989351ogf-banner-4.png",
+//   "/figmaAssets/989351ogf-banner-4.png",
+// ];
 
 const processSteps = [
   {
@@ -136,10 +138,12 @@ export const Desktop = (): JSX.Element => {
 
   useEffect(() => {
     const bannerInterval = setInterval(() => {
-      setCurrentBannerIndex((prev) => (prev + 1) % bannerImages.length);
-    }, 5000);
+      setCurrentBannerIndex((prev) => (prev + 1) % banners.length);
+    }, 2500); // Figma timing
+
     return () => clearInterval(bannerInterval);
   }, []);
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -205,12 +209,15 @@ export const Desktop = (): JSX.Element => {
         <section className="relative px-4 md:px-8">
           <div className="mt-2 md:mt-[11px] mx-auto max-w-4xl md:max-w-5xl shadow-[0px_4px_4px_#00000040] overflow-hidden rounded-[20px]">
             <img
+              key={currentBannerIndex}
               className="w-full h-40 md:h-80 object-cover transition-opacity duration-500"
               alt="Element banner"
-              src={bannerImages[currentBannerIndex]}
+              src={banners[currentBannerIndex].image}
             />
           </div>
         </section>
+
+
 
         <section className="relative px-4 md:px-8 text-center">
           <h1 className="[font-family:'Poppins',Helvetica] font-medium text-black text-2xl md:text-[40px] tracking-[0] leading-[normal] mt-4 md:mt-[17px]">
@@ -219,13 +226,13 @@ export const Desktop = (): JSX.Element => {
           <p className="[font-family:'Poppins',Helvetica] font-medium text-black text-base md:text-xl tracking-[0] leading-[normal] mt-4 md:mt-[26px]">
             The fastest doorstep mobile repair services
           </p>
-          <Button
+          {/* <Button
             onClick={() => setIsModalOpen(true)}
             className="mt-6 md:mt-[26px] bg-[#ff5900] hover:bg-[#ff5900] text-white [font-family:'Poppins',Helvetica] font-medium text-base md:text-lg"
             data-testid="button-book-now"
           >
             Book Now
-          </Button>
+          </Button> */}
         </section>
 
         <section className="mt-12 md:mt-[89px] px-4 md:px-8 lg:px-[122px]">
