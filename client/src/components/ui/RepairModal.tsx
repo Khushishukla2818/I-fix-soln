@@ -38,9 +38,11 @@ const RepairModal: React.FC<RepairModalProps> = ({ isOpen, onClose }) => {
         <div className="modal-container">
           <button className="close-btn" onClick={onClose}>✕</button>
 
-          <h2 className="logo">
-            i-Fix <span>Solutions</span>
-          </h2>
+          <img 
+            src="/figmaAssets/asset-2-1.png" 
+            alt="i-Fix Solutions" 
+            className="logo-img"
+          />
 
           <form className="modal-form" onSubmit={handleSubmit}>
             <label>Full Name</label>
