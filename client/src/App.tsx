@@ -5,7 +5,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
-import RepairModal from "./RepairModal";
+import RepairModal from "@/components/ui/RepairModal";
 import { Desktop } from "@/pages/Desktop";
 
 function Router({ openRepair }: { openRepair: () => void }) {
