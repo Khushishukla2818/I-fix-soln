@@ -211,10 +211,10 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
 
       <main className="pt-20 md:pt-24">
         <section className="relative px-4 md:px-8 max-w-7xl mx-auto">
-          <div className="shadow-lg overflow-hidden rounded-2xl aspect-[16/6] md:aspect-[16/5]">
+          <div className="shadow-lg overflow-hidden rounded-2xl max-h-60 md:max-h-80">
             <img
               key={currentBannerIndex}
-              className="w-full h-full object-contain transition-opacity duration-500 bg-gray-100"
+              className="w-full h-full object-cover transition-opacity duration-500"
               alt="Promotion Banner"
               src={banners[currentBannerIndex].image}
             />
