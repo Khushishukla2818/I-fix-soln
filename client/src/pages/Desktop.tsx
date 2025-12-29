@@ -180,19 +180,7 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
             src="/figmaAssets/asset-2-1.png"
           />
 
-          <nav className="flex items-center gap-2 md:gap-8 ml-auto mr-6 md:mr-12">
-            <Button
-              variant="ghost"
-              className="font-poppins font-medium text-black text-sm md:text-xl hover:text-[#ff5900] hover:bg-transparent whitespace-nowrap"
-            >
-              Home
-            </Button>
-            <Button
-              variant="ghost"
-              className="font-poppins font-medium text-black text-sm md:text-xl hover:text-[#ff5900] hover:bg-transparent whitespace-nowrap"
-            >
-              About us
-            </Button>
+          <nav className="flex items-center gap-2 md:gap-8 ml-auto">
             <Button
               variant="ghost"
               className="font-poppins font-medium text-black text-sm md:text-xl hover:text-[#ff5900] hover:bg-transparent whitespace-nowrap"
@@ -200,12 +188,6 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
               Our Services
             </Button>
           </nav>
-
-          <img
-            className="w-10 md:w-12 h-10 md:h-12 rounded-full object-cover flex-shrink-0"
-            alt="Profile"
-            src="/figmaAssets/ellipse-1.png"
-          />
         </div>
       </header>
 
@@ -436,14 +418,14 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
                 alt="Rectangle"
                 src="/figmaAssets/rectangle-75.png"
               />
-              <div className="absolute top-6 md:top-[61px] left-1/4 md:left-[157px] w-1/2 md:w-[275px] h-24 md:h-[177px]">
+              <div className="absolute top-6 md:top-[61px] left-1/2 transform -translate-x-1/2 w-1/2 md:w-[275px] h-24 md:h-[177px]">
                 <img
                   className="w-full h-full"
                   alt="Rectangle"
                   src="/figmaAssets/rectangle-76.svg"
                 />
                 <img
-                  className="absolute top-4 md:top-[25px] left-6 md:left-[27px] w-32 md:w-[222px] h-20 md:h-[129px] object-cover"
+                  className="absolute top-4 md:top-[25px] left-1/2 transform -translate-x-1/2 w-32 md:w-[222px] h-20 md:h-[129px] object-cover"
                   alt="Asset"
                   src="/figmaAssets/asset-1-1.png"
                 />
@@ -479,7 +461,7 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
         href="https://www.google.com/maps/place/I+Fix+Solutions+Mobile+repairing+shop/@15.8272592,80.3537163,17z/data=!4m6!3m5!1s0x3a4a45bfb76a46c9:0xfb8ecdf99bd3b973!8m2!3d15.8272592!4d80.3562912!16s%2Fg%2F11y5hd7d9x?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA2OUgBUAM%3D"
         target="_blank"
         rel="noopener noreferrer"
-        className="hidden md:block fixed top-60 right-0 z-40 shadow-[-7px_2px_4px_#00000040] transition-transform hover:-translate-x-1"
+        className="hidden md:block fixed bottom-32 right-0 z-40 shadow-[-7px_2px_4px_#00000040] transition-transform hover:-translate-x-1"
       >
         <div className="w-[30px] h-40 md:h-[165px] bg-[#ff5900] rounded-l-[10px] flex items-center justify-center cursor-pointer">
           <div className="w-2.5 [font-family:'Poppins',Helvetica] font-bold text-white text-xs md:text-sm text-center tracking-[0] leading-[18px] uppercase">
@@ -488,7 +470,7 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
         </div>
       </a>
 
-      <div className="hidden md:flex fixed top-96 right-4 md:right-[23px] flex-col gap-6 md:gap-[26px]">
+      <div className="hidden md:flex fixed bottom-4 right-4 md:right-[23px] flex-col gap-6 md:gap-[26px]">
         <a
           href="https://api.whatsapp.com/send?phone=918884996995&text=Hi%20%F0%9F%91%8B%20I%20Fix%20Solutions%20%2C%0AI%20have%20a%20query%20regarding%20my%20mobile.%20Can%20you%20please%20help%3F%0A"
           target="_blank"
