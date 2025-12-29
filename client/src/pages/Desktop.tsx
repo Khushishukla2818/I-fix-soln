@@ -180,22 +180,22 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
             src="/figmaAssets/asset-2-1.png"
           />
 
-          <nav className="flex items-center gap-4 md:gap-12 ml-auto mr-4 md:mr-8">
+          <nav className="flex items-center gap-2 md:gap-8 ml-auto mr-6 md:mr-12">
             <Button
               variant="ghost"
-              className="font-poppins font-medium text-black text-xs md:text-lg hover:text-[#ff5900] hover:bg-transparent whitespace-nowrap"
+              className="font-poppins font-medium text-black text-sm md:text-xl hover:text-[#ff5900] hover:bg-transparent whitespace-nowrap"
             >
               Home
             </Button>
             <Button
               variant="ghost"
-              className="font-poppins font-medium text-black text-xs md:text-lg hover:text-[#ff5900] hover:bg-transparent whitespace-nowrap"
+              className="font-poppins font-medium text-black text-sm md:text-xl hover:text-[#ff5900] hover:bg-transparent whitespace-nowrap"
             >
               About us
             </Button>
             <Button
               variant="ghost"
-              className="font-poppins font-medium text-black text-xs md:text-lg hover:text-[#ff5900] hover:bg-transparent whitespace-nowrap"
+              className="font-poppins font-medium text-black text-sm md:text-xl hover:text-[#ff5900] hover:bg-transparent whitespace-nowrap"
             >
               Our Services
             </Button>
@@ -214,7 +214,7 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
           <div className="shadow-lg overflow-hidden rounded-2xl aspect-[16/6] md:aspect-[16/5]">
             <img
               key={currentBannerIndex}
-              className="w-full h-full object-cover transition-opacity duration-500"
+              className="w-full h-full object-contain transition-opacity duration-500 bg-gray-100"
               alt="Promotion Banner"
               src={banners[currentBannerIndex].image}
             />
@@ -245,7 +245,7 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
             {serviceCards.map((card, index) => (
               <Card
                 key={index}
-                className="bg-[#fffefe] rounded-[10px] shadow-[0px_0px_4px_#00000040] border-0 cursor-pointer transition-transform duration-300 hover:scale-105 active:scale-95"
+                className="bg-[#fffefe] rounded-[10px] shadow-[0px_0px_4px_#00000040] border-0 cursor-pointer transition-all duration-300 hover:scale-110 hover:border-4 hover:border-[#ff5900] active:scale-95 active:border-4 active:border-[#ff5900]"
                 onClick={openRepair}
                 data-testid={`card-service-${index}`}
               >
@@ -282,7 +282,7 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
               <button
                 key={index}
                 onClick={openRepair}
-                className="flex w-16 md:w-[111px] h-16 md:h-[111px] items-center justify-center p-2 md:p-[13px] bg-white rounded-[10px] shadow-[0px_0px_4px_#00000040] cursor-pointer transition-transform duration-300 hover:scale-110 active:scale-95"
+                className="flex w-16 md:w-[111px] h-16 md:h-[111px] items-center justify-center p-2 md:p-[13px] bg-white rounded-[10px] shadow-[0px_0px_4px_#00000040] cursor-pointer transition-all duration-300 hover:scale-110 hover:border-4 hover:border-[#ff5900] active:scale-95 active:border-4 active:border-[#ff5900]"
                 data-testid={`button-brand-${index}`}
                 type="button"
               >
