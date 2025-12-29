@@ -172,50 +172,50 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
 
   return (
     <div className="bg-white w-full relative">
-      <header className="fixed top-0 left-0 right-0 bg-[#fffefe] shadow-[0px_4px_4px_#00000040] z-50 h-16 md:h-[71px]">
-        <div className="flex items-center justify-between h-full px-4 md:px-8">
+      <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-50 h-16 md:h-20">
+        <div className="max-w-7xl mx-auto flex items-center justify-between h-full px-4 md:px-8">
           <img
-            className="w-32 md:w-[232px] h-10 md:h-14 object-contain"
-            alt="Asset"
+            className="w-32 md:w-48 h-auto object-contain"
+            alt="Logo"
             src="/figmaAssets/asset-2-1.png"
           />
 
-          <nav className="hidden md:flex items-center gap-8 md:gap-[52px]">
+          <nav className="hidden md:flex items-center gap-12">
             <Button
               variant="ghost"
-              className="[font-family:'Poppins',Helvetica] font-medium text-black text-lg md:text-[21px] h-auto p-0 hover:bg-transparent"
+              className="font-poppins font-medium text-black text-lg hover:text-[#ff5900] hover:bg-transparent"
             >
               Home
             </Button>
             <Button
               variant="ghost"
-              className="[font-family:'Poppins',Helvetica] font-medium text-black text-lg md:text-[21px] h-auto p-0 hover:bg-transparent"
+              className="font-poppins font-medium text-black text-lg hover:text-[#ff5900] hover:bg-transparent"
             >
               About us
             </Button>
             <Button
               variant="ghost"
-              className="[font-family:'Poppins',Helvetica] font-medium text-black text-lg md:text-[21px] h-auto p-0 hover:bg-transparent"
+              className="font-poppins font-medium text-black text-lg hover:text-[#ff5900] hover:bg-transparent"
             >
               Our Services
             </Button>
           </nav>
 
           <img
-            className="w-10 md:w-12 h-10 md:h-12 object-cover"
-            alt="Ellipse"
+            className="w-10 md:w-12 h-10 md:h-12 rounded-full object-cover"
+            alt="Profile"
             src="/figmaAssets/ellipse-1.png"
           />
         </div>
       </header>
 
-      <main className="pt-16 md:pt-[71px]">
-        <section className="relative px-4 md:px-8">
-          <div className="mt-2 md:mt-[11px] mx-auto max-w-4xl md:max-w-5xl shadow-[0px_4px_4px_#00000040] overflow-hidden rounded-[20px]">
+      <main className="pt-20 md:pt-24">
+        <section className="relative px-4 md:px-8 max-w-7xl mx-auto">
+          <div className="shadow-lg overflow-hidden rounded-2xl aspect-[21/9] md:aspect-[24/7]">
             <img
               key={currentBannerIndex}
-              className="w-full h-40 md:h-80 object-cover transition-opacity duration-500"
-              alt="Element banner"
+              className="w-full h-full object-cover transition-opacity duration-500"
+              alt="Promotion Banner"
               src={banners[currentBannerIndex].image}
             />
           </div>
@@ -245,7 +245,8 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
             {serviceCards.map((card, index) => (
               <Card
                 key={index}
-                className="bg-[#fffefe] rounded-[10px] shadow-[0px_0px_4px_#00000040] border-0"
+                className="bg-[#fffefe] rounded-[10px] shadow-[0px_0px_4px_#00000040] border-0 cursor-pointer transition-transform hover:scale-105"
+                onClick={openRepair}
               >
                 <CardContent className="p-0 h-64 md:h-[277px] flex flex-col">
                   <div className="flex-1 flex items-center justify-center p-4 md:p-8">
@@ -470,13 +471,18 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
         </section>
       </main>
 
-      <aside className="hidden md:block fixed top-60 right-6 md:right-[30px] w-8 h-40 md:h-[165px] shadow-[-7px_2px_4px_#00000040]">
-        <div className="w-[30px] h-full bg-[#ff5900] rounded-l-[10px] flex items-center justify-center">
-          <div className="w-2.5 [font-family:'Poppins',Helvetica] font-bold text-white text-xs md:text-sm text-center tracking-[0] leading-[18px]">
+      <a
+        href="https://www.google.com/maps/place/I+Fix+Solutions+Mobile+repairing+shop/@15.8272592,80.3537163,17z/data=!4m6!3m5!1s0x3a4a45bfb76a46c9:0xfb8ecdf99bd3b973!8m2!3d15.8272592!4d80.3562912!16s%2Fg%2F11y5hd7d9x?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA2OUgBUAM%3D"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hidden md:block fixed top-60 right-0 z-40 shadow-[-7px_2px_4px_#00000040] transition-transform hover:-translate-x-1"
+      >
+        <div className="w-[30px] h-40 md:h-[165px] bg-[#ff5900] rounded-l-[10px] flex items-center justify-center cursor-pointer">
+          <div className="w-2.5 [font-family:'Poppins',Helvetica] font-bold text-white text-xs md:text-sm text-center tracking-[0] leading-[18px] uppercase">
             F<br />e<br />e<br />d<br />b<br />a<br />c<br />k
           </div>
         </div>
-      </aside>
+      </a>
 
       <div className="hidden md:flex fixed top-96 right-4 md:right-[23px] flex-col gap-6 md:gap-[26px]">
         <a
