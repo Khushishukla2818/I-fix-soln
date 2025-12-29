@@ -53,6 +53,10 @@ const brandLogos = [
 //   "/figmaAssets/989351ogf-banner-4.png",
 //   "/figmaAssets/989351ogf-banner-4.png",
 // ];
+type DesktopProps = {
+  openRepair: () => void;
+};
+
 
 const processSteps = [
   {
@@ -126,7 +130,7 @@ const bottomFeatures = [
   },
 ];
 
-export const Desktop = (): JSX.Element => {
+export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -226,13 +230,14 @@ export const Desktop = (): JSX.Element => {
           <p className="[font-family:'Poppins',Helvetica] font-medium text-black text-base md:text-xl tracking-[0] leading-[normal] mt-4 md:mt-[26px]">
             The fastest doorstep mobile repair services
           </p>
-          {/* <Button
-            onClick={() => setIsModalOpen(true)}
+          <Button
+            onClick={openRepair}
             className="mt-6 md:mt-[26px] bg-[#ff5900] hover:bg-[#ff5900] text-white [font-family:'Poppins',Helvetica] font-medium text-base md:text-lg"
             data-testid="button-book-now"
           >
             Book Now
-          </Button> */}
+          </Button>
+
         </section>
 
         <section className="mt-12 md:mt-[89px] px-4 md:px-8 lg:px-[122px]">
