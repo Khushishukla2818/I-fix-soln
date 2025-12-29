@@ -175,34 +175,34 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
       <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-50 h-16 md:h-20">
         <div className="max-w-7xl mx-auto flex items-center justify-between h-full px-4 md:px-8">
           <img
-            className="w-32 md:w-48 h-auto object-contain"
+            className="w-24 md:w-40 h-auto object-contain"
             alt="Logo"
             src="/figmaAssets/asset-2-1.png"
           />
 
-          <nav className="hidden md:flex items-center gap-12">
+          <nav className="flex items-center gap-4 md:gap-12 ml-auto mr-4 md:mr-8">
             <Button
               variant="ghost"
-              className="font-poppins font-medium text-black text-lg hover:text-[#ff5900] hover:bg-transparent"
+              className="font-poppins font-medium text-black text-xs md:text-lg hover:text-[#ff5900] hover:bg-transparent whitespace-nowrap"
             >
               Home
             </Button>
             <Button
               variant="ghost"
-              className="font-poppins font-medium text-black text-lg hover:text-[#ff5900] hover:bg-transparent"
+              className="font-poppins font-medium text-black text-xs md:text-lg hover:text-[#ff5900] hover:bg-transparent whitespace-nowrap"
             >
               About us
             </Button>
             <Button
               variant="ghost"
-              className="font-poppins font-medium text-black text-lg hover:text-[#ff5900] hover:bg-transparent"
+              className="font-poppins font-medium text-black text-xs md:text-lg hover:text-[#ff5900] hover:bg-transparent whitespace-nowrap"
             >
               Our Services
             </Button>
           </nav>
 
           <img
-            className="w-10 md:w-12 h-10 md:h-12 rounded-full object-cover"
+            className="w-10 md:w-12 h-10 md:h-12 rounded-full object-cover flex-shrink-0"
             alt="Profile"
             src="/figmaAssets/ellipse-1.png"
           />
@@ -211,7 +211,7 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
 
       <main className="pt-20 md:pt-24">
         <section className="relative px-4 md:px-8 max-w-7xl mx-auto">
-          <div className="shadow-lg overflow-hidden rounded-2xl aspect-[21/9] md:aspect-[24/7]">
+          <div className="shadow-lg overflow-hidden rounded-2xl aspect-[16/6] md:aspect-[16/5]">
             <img
               key={currentBannerIndex}
               className="w-full h-full object-cover transition-opacity duration-500"
@@ -240,23 +240,24 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
 
         </section>
 
-        <section className="mt-12 md:mt-[89px] px-4 md:px-8 lg:px-[122px]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-[21px]">
+        <section className="mt-8 md:mt-[89px] px-4 md:px-8 lg:px-[122px]">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-[21px]">
             {serviceCards.map((card, index) => (
               <Card
                 key={index}
-                className="bg-[#fffefe] rounded-[10px] shadow-[0px_0px_4px_#00000040] border-0 cursor-pointer transition-transform hover:scale-105"
+                className="bg-[#fffefe] rounded-[10px] shadow-[0px_0px_4px_#00000040] border-0 cursor-pointer transition-transform duration-300 hover:scale-105 active:scale-95"
                 onClick={openRepair}
+                data-testid={`card-service-${index}`}
               >
-                <CardContent className="p-0 h-64 md:h-[277px] flex flex-col">
-                  <div className="flex-1 flex items-center justify-center p-4 md:p-8">
+                <CardContent className="p-0 h-40 md:h-[277px] flex flex-col">
+                  <div className="flex-1 flex items-center justify-center p-2 md:p-8">
                     <img
-                      className="w-32 md:w-[158px] h-32 md:h-[166px] object-cover"
+                      className="w-20 md:w-[158px] h-20 md:h-[166px] object-cover"
                       alt={card.title}
                       src={card.image}
                     />
                   </div>
-                  <div className="h-auto md:h-[27px] [font-family:'Poppins',Helvetica] font-medium text-black text-base md:text-lg text-center tracking-[0] leading-[normal] mb-4 md:mb-6">
+                  <div className="h-auto md:h-[27px] [font-family:'Poppins',Helvetica] font-medium text-black text-xs md:text-lg text-center tracking-[0] leading-[normal] mb-2 md:mb-6 px-2">
                     {card.title}
                   </div>
                 </CardContent>
@@ -276,18 +277,21 @@ export const Desktop = ({ openRepair }: DesktopProps): JSX.Element => {
             src="/figmaAssets/line-2.svg"
           />
 
-          <div className="mt-8 md:mt-[47px] grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 md:gap-x-[43px] md:gap-y-[35px]">
+          <div className="mt-6 md:mt-[47px] grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 md:gap-x-[43px] md:gap-y-[35px]">
             {brandLogos.map((logo, index) => (
-              <div
+              <button
                 key={index}
-                className="flex w-20 md:w-[111px] h-20 md:h-[111px] items-center justify-center p-2 md:p-[13px] bg-white rounded-[10px] shadow-[0px_0px_4px_#00000040]"
+                onClick={openRepair}
+                className="flex w-16 md:w-[111px] h-16 md:h-[111px] items-center justify-center p-2 md:p-[13px] bg-white rounded-[10px] shadow-[0px_0px_4px_#00000040] cursor-pointer transition-transform duration-300 hover:scale-110 active:scale-95"
+                data-testid={`button-brand-${index}`}
+                type="button"
               >
                 <img
-                  className="flex-1 h-16 md:h-[85px] object-cover"
+                  className="flex-1 h-12 md:h-[85px] object-cover pointer-events-none"
                   alt={logo.alt}
                   src={logo.src}
                 />
-              </div>
+              </button>
             ))}
           </div>
 
