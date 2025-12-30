@@ -1,6 +1,5 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
 
 // Sample phone models database
 const phoneModelsData = [
@@ -19,10 +18,11 @@ const phoneModelsData = [
 ];
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Search phone models endpoint
+
+  // 🔍 Search phones
   app.get("/api/search-phones", (req, res) => {
     const query = (req.query.q as string)?.toLowerCase() || "";
-    
+
     if (!query) {
       return res.json([]);
     }
@@ -37,7 +37,36 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json(results);
   });
 
-  const httpServer = createServer(app);
+  // 📝 Repair request → Google Sheet
+  app.post("/api/repair", async (req, res) => {
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbx8bBukt8TOFZILgZb1GSduU-howWvBjCxXj2Cx3pfIsNEmKLzGm12F7UM10H8Bpu1Z9Q/exec",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(req.body),
+        }
+      );
 
+      const result = await response.json();
+
+      res.json({
+        success: true,
+        message: "Repair request saved successfully",
+        result,
+      });
+    } catch (error) {
+      console.error("Google Sheet error:", error);
+      res.status(500).json({
+        success: false,
+        message: "Failed to save repair request",
+      });
+    }
+  });
+
+  const httpServer = createServer(app);
   return httpServer;
 }

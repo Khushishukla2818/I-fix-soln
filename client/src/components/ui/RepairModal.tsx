@@ -9,11 +9,14 @@ type RepairModalProps = {
 
 const RepairModal: React.FC<RepairModalProps> = ({ isOpen, onClose }) => {
   const [showSuccess, setShowSuccess] = useState(false);
+
   const [fullName, setFullName] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [cityPincode, setCityPincode] = useState("");
   const [device, setDevice] = useState("");
   const [modelNumber, setModelNumber] = useState("");
+
+  const [loading, setLoading] = useState(false);
 
   const isFormValid =
     fullName.trim() !== "" &&
@@ -22,10 +25,36 @@ const RepairModal: React.FC<RepairModalProps> = ({ isOpen, onClose }) => {
     device.trim() !== "" &&
     modelNumber.trim() !== "";
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isFormValid) {
+
+    if (!isFormValid) return;
+
+    try {
+      setLoading(true);
+
+      // 🔹 SEND DATA TO BACKEND
+      await fetch("/api/repair", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: fullName,
+          phone: mobileNumber,
+          pincode: cityPincode,
+          device: device,
+          model: modelNumber,
+        }),
+      });
+
+      // 🔹 SHOW SUCCESS POPUP
       setShowSuccess(true);
+    } catch (error) {
+      alert("Something went wrong. Please try again.");
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -38,9 +67,9 @@ const RepairModal: React.FC<RepairModalProps> = ({ isOpen, onClose }) => {
         <div className="modal-container">
           <button className="close-btn" onClick={onClose}>✕</button>
 
-          <img 
-            src="/figmaAssets/asset-2-1.png" 
-            alt="i-Fix Solutions" 
+          <img
+            src="/figmaAssets/asset-2-1.png"
+            alt="i-Fix Solutions"
             className="logo-img"
           />
 
@@ -89,20 +118,20 @@ const RepairModal: React.FC<RepairModalProps> = ({ isOpen, onClose }) => {
             <button
               type="submit"
               className={`submit-btn ${isFormValid ? "" : "submit-btn-disabled"}`}
-              disabled={!isFormValid}
+              disabled={!isFormValid || loading}
             >
-              Repair Now
+              {loading ? "Submitting..." : "Repair Now"}
             </button>
           </form>
         </div>
       </div>
 
-      {/* ✅ SUCCESS MODAL (ADD HERE) */}
+      {/* ✅ SUCCESS MODAL */}
       <SuccessModal
         isOpen={showSuccess}
         onClose={() => {
           setShowSuccess(false);
-          onClose(); // closes repair modal also
+          onClose(); // close repair modal also
         }}
       />
     </>
